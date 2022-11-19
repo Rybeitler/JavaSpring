@@ -14,32 +14,13 @@
 </head>
 <body>
 	<div class="container-fluid">
-	<div class="container">
-		<h2 class="m-2 fs-1">Burger Tracker</h2>
-		 <table class="table table-striped table-warning table-border-dark">
-			<thead>
-				<tr>
-					<td>Burger Name</td>
-					<td>Restaurant Name</td>
-					<td>Rating(out of 5)</td>
-					<td>Actions</td>
-				</tr>
-			</thead>
-			<tbody>
-				<c:forEach var="burger" items="${burgers}">
-					<tr>
-						<td>${burger.name}</td>
-						<td>${burger.restaurant}</td>
-						<td>${burger.rating}</td>
-						<td><a href="/burger/${burger.id}/edit" class="btn btn-warning m-1">Edit</a><a href="/burger/${burger.id}/delete" class="btn btn-danger">Delete</a></td>
-					</tr>
-				</c:forEach>
-			</tbody>
-		</table>
-	</div>
 	<div class="container bg-secondary bg-gradient">
-		<h2 class="m-2 fs-2">Add a Burger:</h2>
-		<form:form action="/burger/add" method="post" modelAttribute="newBurger">
+		<div class="nav d-flex justify-content-around">
+			<h2 class="m-2 fs-1">Edit Burger</h2>
+			<a href="/burger" class="btn btn-primary m-2">Back to Burgers</a>
+		</div>
+		<form:form action="/burger/${thisBurger.id}/edit" method="post" modelAttribute="thisBurger">
+			<input type="hidden" name="_method" value="put">
 			<div class="form-group m-1">
                 <form:label class="form-label" path="name">Burger Name:</form:label>
                 <form:errors class="text-danger" path="name"/>
